@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="164" columnWidth="124" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.610510000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="producto" class="java.lang.String"/>
+	<parameter name="Tamaño" class="java.lang.String"/>
+	<parameter name="presentacion" class="java.lang.String"/>
+	<parameter name="precio Unitario" class="java.lang.String"/>
+	<parameter name="cantidad" class="java.lang.String"/>
+	<parameter name="Total" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from ventas;]]>
+	</queryString>
+	<field name="id_factura" class="java.lang.Integer"/>
+	<field name="id_producto" class="java.lang.Long"/>
+	<field name="Vcantidad" class="java.lang.Double"/>
+	<field name="ventaTotal" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="100" y="42" width="24" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="23" width="107" height="19"/>
+				<textElement>
+					<font fontName="Serif" size="14"/>
+				</textElement>
+				<text><![CDATA[Ara`s Pañaleria]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="27" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="27" y="0" width="27" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Tamaño}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="0" width="17" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{presentacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="0" width="16" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{precio Unitario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="87" y="0" width="13" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="24" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

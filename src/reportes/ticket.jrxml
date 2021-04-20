@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="842" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="20" uuid="7f5a9bce-5afc-496d-8f89-a0b317af08b8">
+	<property name="ireport.zoom" value="2.853116706110003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="producto" class="java.lang.String"/>
+	<parameter name="tamaño" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="34" y="16" width="100" height="20" uuid="8be46b2e-1c04-41aa-8540-b8f7893bae5c"/>
+				<text><![CDATA[Ara's Pañaleria]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="34" height="20" uuid="8077ffdd-840e-4f8e-83a4-c64ff997c29b"/>
+				<textFieldExpression><![CDATA[$P{producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="34" y="0" width="21" height="20" uuid="3b0e7b59-2664-4bfd-82fa-c8cb542a5570"/>
+				<textFieldExpression><![CDATA[$P{tamaño}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
