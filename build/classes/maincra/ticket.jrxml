@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="2713" columnWidth="162" leftMargin="1" rightMargin="1" topMargin="0" bottomMargin="0" uuid="5405a837-aaca-406e-9156-d71944ecb864">
+	<property name="ireport.zoom" value="2.1435888100000016"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<style name="style1">
+		<conditionalStyle>
+			<style/>
+		</conditionalStyle>
+	</style>
+	<parameter name="Total" class="java.lang.String"/>
+	<field name="producto" class="java.lang.String"/>
+	<field name="tamaño" class="java.lang.String"/>
+	<field name="presentacion" class="java.lang.String"/>
+	<field name="precioUnitario" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.String"/>
+	<field name="total" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="44" y="48" width="100" height="20" uuid="c1d28d85-db1f-4409-816c-eb1d3b666567"/>
+				<text><![CDATA[Ara's Pañalerìa]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="45" y="27" width="100" height="20" uuid="5adab015-e53a-4ecb-b2cc-34f4f38c3b95"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="144" height="35" uuid="bd165448-9c6e-405a-8970-f84f097da440"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Av. San Jose Mz. 13 Lt.59 San Vicente Chicoloapan    Horario: 9:00 am-9:00 pm Lunes-Sabado
+****Aceptamos Tarjetas de debito y Vales de despensa****
+
+]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="15" width="58" height="20" uuid="ac0c9ee1-0fdd-4b4e-a0eb-ea5fa7df4ad7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Precio Unitario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="15" width="29" height="20" uuid="c56d5059-040e-473a-8942-215ec38eb95e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="15" width="30" height="20" uuid="317dc753-083c-4e59-81be-0386be02b9c0"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Importe]]></text>
+			</staticText>
+			<line>
+				<reportElement mode="Transparent" x="0" y="35" width="162" height="1" uuid="c2480615-1fec-4a4d-922d-bae5a979bfbb">
+					<property name="net.sf.jasperreports.export.pdf.tag.tr" value="start"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="2" y="0" width="43" height="16" uuid="e37904d3-0fb5-4733-8680-e7319034ceb8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="0" width="34" height="18" uuid="b21bc034-a028-4142-9bb0-ce556f883552"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tamaño}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="16" width="26" height="18" uuid="649ae506-171e-4650-800f-09e65dc5a705"/>
+				<textFieldExpression><![CDATA[$F{precioUnitario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="23" width="10" height="13" uuid="e8310298-7d03-4894-bbda-68fff1b1492e"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="18" width="19" height="16" uuid="564ef5f0-2cec-4373-a5c3-a7385b8f37aa"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="107" y="0" width="30" height="18" uuid="12340d04-12b6-4847-bb7d-5c6dff965fd2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{presentacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="104" y="18" width="11" height="13" uuid="f6483521-0cd8-42e2-b75c-e91ea3088e07"/>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="18" width="11" height="13" uuid="33ef249e-7787-4397-90a7-87e03d908489"/>
+				<text><![CDATA[$]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="53" splitType="Stretch">
+			<textField>
+				<reportElement x="99" y="2" width="35" height="20" uuid="48a01cd2-127d-4ae2-a383-c21561ad1d36"/>
+				<textFieldExpression><![CDATA[$P{Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="1" width="66" height="21" uuid="a91e533e-5295-48c5-8db3-72edbfe97ec0"/>
+				<text><![CDATA[Su Total es:$]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="162" height="1" uuid="d97be84c-bc59-425c-869f-5ed1587aa8c3"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="22" width="137" height="31" uuid="b385072b-7c44-454f-a028-ea1788d643f5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[*Nota: Agradecemos que revise                                                                                                        su mercancias antes de salir.                                                                                                                Gracias por su preferencia.                                                                                                                  Vuelva Pronto (:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

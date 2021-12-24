@@ -51,6 +51,7 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.util.*;
+import net.sf.jasperreports.engine.JasperPrintManager;
 
 public class PuntoAras extends javax.swing.JFrame {
 Conect conexFor = new Conect();
@@ -148,6 +149,10 @@ Conect conexFor = new Conect();
         inventario = new javax.swing.JButton();
         sumaDeVentas = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        gananciasDia = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        btnganar = new javax.swing.JButton();
+        btneliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -502,8 +507,14 @@ Conect conexFor = new Conect();
             }
         });
         jTEXTbusquedaTab2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTEXTbusquedaTab2KeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTEXTbusquedaTab2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTEXTbusquedaTab2KeyTyped(evt);
             }
         });
 
@@ -808,7 +819,35 @@ Conect conexFor = new Conect();
             }
         });
 
+        sumaDeVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sumaDeVentasActionPerformed(evt);
+            }
+        });
+
         jLabel7.setText("Total de venta");
+
+        gananciasDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gananciasDiaActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Ganancias del Dia");
+
+        btnganar.setText("ganancias");
+        btnganar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnganarActionPerformed(evt);
+            }
+        });
+
+        btneliminar.setText("reiniciar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -821,14 +860,23 @@ Conect conexFor = new Conect();
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(93, 93, 93)
-                        .addComponent(ventasDia)
-                        .addGap(56, 56, 56)
-                        .addComponent(inventario)
-                        .addGap(169, 169, 169)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(sumaDeVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(207, Short.MAX_VALUE))
+                            .addComponent(btneliminar)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(ventasDia)
+                                .addGap(56, 56, 56)
+                                .addComponent(inventario)
+                                .addGap(39, 39, 39)
+                                .addComponent(btnganar)
+                                .addGap(57, 57, 57)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sumaDeVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(gananciasDia, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -840,13 +888,20 @@ Conect conexFor = new Conect();
                         .addGap(31, 31, 31)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ventasDia)
-                            .addComponent(inventario)))
+                            .addComponent(inventario)
+                            .addComponent(btnganar)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9))
                         .addGap(18, 18, 18)
-                        .addComponent(sumaDeVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(174, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(gananciasDia)
+                            .addComponent(sumaDeVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))))
+                .addGap(16, 16, 16)
+                .addComponent(btneliminar)
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inventario", jPanel3);
@@ -1075,12 +1130,12 @@ Map param1 = new HashMap();
 //
 //      
 //   }
-      
-  JasperViewer viewer= new JasperViewer(jprint, false);
-//       JasperViewer.viewReport(jprint);
-      viewer.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       viewer.setVisible(true);
-       
+      JasperPrintManager.printReport(jprint, false);
+//  JasperViewer viewer= new JasperViewer(jprint, false);
+////       JasperViewer.viewReport(jprint);
+//      viewer.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+//       viewer.setVisible(true);
+//       
     } catch (JRException ex) {
         Logger.getLogger(PuntoAras.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -1148,6 +1203,7 @@ limpiarFormulario(this.getContentPane().getComponents());
         
         ventasDeldia();
         sumaDeVentas.setText(Double.toString((double) calcularTotalVentasdeldia()));
+        
         
     }//GEN-LAST:event_ventasDiaActionPerformed
 
@@ -1235,11 +1291,11 @@ Map param1 = new HashMap();
 //
 //      
 //   }
-      
-  JasperViewer viewer= new JasperViewer(jprint, false);
-//       JasperViewer.viewReport(jprint);
-      viewer.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       viewer.setVisible(true);
+     JasperPrintManager.printReport(jprint, false); 
+//  JasperViewer viewer= new JasperViewer(jprint, false);
+////       JasperViewer.viewReport(jprint);
+//      viewer.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+//       viewer.setVisible(true);
        
     } catch (JRException ex) {
         Logger.getLogger(PuntoAras.class.getName()).log(Level.SEVERE, null, ex);
@@ -1297,6 +1353,39 @@ JTTotal2.setText(Double.toString((double) calcularTotalDos()));
     private void ganarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ganarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ganarActionPerformed
+
+    private void gananciasDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gananciasDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gananciasDiaActionPerformed
+
+    private void sumaDeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumaDeVentasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sumaDeVentasActionPerformed
+
+    private void btnganarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnganarActionPerformed
+
+       ventasDeldia();
+        gananciasDia.setText(Double.toString((double) calcularTotalGanancias()));
+    }//GEN-LAST:event_btnganarActionPerformed
+
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+
+    try {
+        reiniciarGanancias();        // TODO add your handling code here:
+    } catch (SQLException ex) {
+        Logger.getLogger(PuntoAras.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_btneliminarActionPerformed
+
+    private void jTEXTbusquedaTab2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTEXTbusquedaTab2KeyPressed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTEXTbusquedaTab2KeyPressed
+
+    private void jTEXTbusquedaTab2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTEXTbusquedaTab2KeyTyped
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTEXTbusquedaTab2KeyTyped
 public double calcularTotal(){
 double contar=Jaras.getRowCount();
 
@@ -1340,6 +1429,19 @@ calcularTotal=calcularTotal+Double.parseDouble(informes.getValueAt(i, 3).toStrin
 return calcularTotal;
 }
 
+public double calcularTotalGanancias(){
+double contar=informes.getRowCount();
+
+    double calcularTotales=0;
+for(int i=0; i<contar;i++){
+calcularTotales=calcularTotales+Double.parseDouble(informes.getValueAt(i, 4).toString());
+
+}
+return calcularTotales;
+}
+
+
+
  public void EliminarRow(){
         int contador=0;
          contador=Jaras.getSelectedRow();
@@ -1370,6 +1472,16 @@ for(int i=0; i<contar;i++){
             ResultSet rs=st.executeQuery(sql1);
 
 }
+
+}
+  public void reiniciarGanancias() throws SQLException{
+
+    String sql1="delete from ventas";
+            PreparedStatement st=con.prepareStatement(sql1);
+            st.execute();
+         
+
+
 
 }
 public void ProcedimientoAlmacenado1() throws SQLException{
@@ -1532,50 +1644,11 @@ String total;
        public void mostrarVentaScanner(BigInteger valor){
    
 
-//      for (int i=0;i<100;i++){
-//          System.out.println(midas.getRowCount());
-//          System.out.println(midas.getValueAt(i, 0));
-//            if(registros[0]==midas.getValueAt(i, 0)){
-//            
-//            
-//            }else {
+
                 
                try {
             
 
-//preciounitario=Integer.parseInt(registros[3]);
-//sumadeproductos=(int) tab1canti.getSelectedItem();
-//total=sumadeproductos*preciounitario;
-//registros[7]= Integer.toString(total);
-
-
-//JOptionPane.showMessageDialog(null, total);
-//for(int i = 1; i<JarasTab2.getRowCount()-1;i++){
-
-//if(lunr==valor){
-//    
-//    System.out.println("producto repetido");
-//
-//}else{ 
-   
-
-            //             asi modificamos lo que haya en un lugar especifico de la tabla
-
-//             midas.setValueAt(JarasTab2.getRowCount(), JarasTab2.getRowCount()-1, 0);
-             
-
-
-
-//                System.out.println(midas.getValueAt(JarasTab2.getRowCount()-1, 0));
-//                System.out.println(midas.getValueAt(0, 0));
-//             int mi=      (int)  midas.getValueAt(0, 0);
-
-//BigInteger superliga=new BigInteger("1500");
-
-//BigInteger superiores=superliga;
-//BigInteger sum = new BigInteger(lunr.add(valor).toString());
-//System.out.println(sum);
-//int checador [] = new int[100];
 int resultado=0;
  String [] registros = null;
 for(int i =0;i<JarasTab2.getRowCount();i++){
@@ -1625,7 +1698,7 @@ String sumadeproductos;
 String total;
 //                 midas.setValueAt
  midas.addRow(new Object[] {registros[0],registros[1],registros[2],registros[3],registros[4],registros[5],registros[6],registros[7]});
-
+jTEXTbusquedaTab2.setText("");
  System.out.println("no son iguales igualies");
    
       }
@@ -1652,38 +1725,24 @@ double preciofinal = Double.valueOf(totalPrecio);
 //                 midas.setValueAt(tab2canti.getSelectedItem(), i, 6);
                  midas.setValueAt(cantidad+1, JarasTab2.getRowCount()-1, 6);
                  midas.setValueAt(preciofinal+base1,JarasTab2.getRowCount()-1, 7);
-   
+   jTEXTbusquedaTab2.setText("");
 }
     
-    
-    
-    
-    
-    
+//    
+//    midas1
+//jtextventas2
+//        JarasTab3
+//    
+//    
+//    
 
 
 
 
 
 
+//        jTEXTbusquedaTab2.setText("");
 
-
-//ultimo if
-
-//nuevo modificacion
-//                System.out.println("de que hbalas"+midas.getValueAt(1, 1));
-//                System.out.println("lunares"+lunr); 
-        jTEXTbusquedaTab2.setText("");
-//            modelin.addRow(registros);
-////            modelin.insertRow(0, registros);
-//            modelin.insertRow(1, registros);
-//            modelin.insertRow(2, registros);
-//            modelin.insertRow(3, registros);
-//}elsse cierre
-          
-//            }//cierre for
-            //prueba
-          
             
             
             
@@ -1707,19 +1766,42 @@ double preciofinal = Double.valueOf(totalPrecio);
     }
     
      public void mostrarVentaScanner1(BigInteger valors){
-    String [] registros= new String[9];
+ 
+               try {
+            
+
+int resultado=0;
+ String [] registros = null;
+for(int i =0;i<JarasTab3.getRowCount();i++){
+
+    if(JarasTab3.getRowCount()>0){
+    BigInteger lunr=new BigInteger(JarasTab3.getValueAt(i, 0).toString());
+BigInteger superior=lunr;
+
+resultado=valors.compareTo(lunr);
+        System.out.println(resultado);
+        System.out.println(JarasTab3.getValueAt(i, 0));
+        
+}else {
+    System.out.println("esta vacia la tabla");
+}
+}
+if(resultado!=0 || JarasTab3.getRowCount()==0){
+//if(resultado!=0 ){
+    
+    
+    
+      registros= new String[9];
     String [] filas= new String[6];
     String [] columnas= {"Id","nompre", "tamaño","presentacion","precio","cantidad"};
     
-    int filaseleccionada=jTableArasTab3.getSelectedRow();
+//    int filaseleccionada=jTableAr.getSelectedRow();
 //     String hola = (String) jTableAras.getValueAt(filaseleccionada,5);
-    String sql1="select Tnombreproduct, tamanio, presentacion,precio,cantidad,Id_Pro,(precio*"+1+") as preciofinal from productos where Id_Pro="+valors+"";
+    String sql1="select Tnombreproduct, tamanio, presentacion,precio,cantidad,Id_Pro,(precio*"+tab2canti1.getSelectedItem()+") as preciofinal from productos where Id_Pro="+valors+"";
      
 //    String sql2="select * from productos where Tnombreproduct like'%"+jTableAras.getValueAt(filaseleccionada,0)+"%'";
-    
- 
-        try {
-            Statement st=con.createStatement();
+BigInteger numRpe= valors;    
+              Statement st=con.createStatement();
             ResultSet rs=st.executeQuery(sql1);
             while(rs.next()){
                  registros[0]=rs.getString("Id_Pro");
@@ -1729,37 +1811,79 @@ double preciofinal = Double.valueOf(totalPrecio);
             registros[4]=rs.getString("precio");
             registros[5]=rs.getString("cantidad");
             String inicializador="1";
-            registros[6]= inicializador;
+            registros[6]= (String)tab2canti1.getSelectedItem();
             
             registros[7]=rs.getString("preciofinal");
 String sumadeproductos;
 
 String total;
+//                 midas.setValueAt
+ midas1.addRow(new Object[] {registros[0],registros[1],registros[2],registros[3],registros[4],registros[5],registros[6],registros[7]});
+jtextventas2.setText("");
+ System.out.println("no son iguales igualies");
+   
+      }
+   
+    System.out.println("//////////////////");
+//}else if(resultado==0 && JarasTab2.getRowCount()>1){
+}else if(resultado==0){
+      System.out.println("son iguales");
+                System.out.println("vammos con la frase ya existe");
+                System.out.println("///////////////////////////////");
+////                 midas.setValueAt(JarasTab2.getRowCount(), JarasTab2.getRowCount()-1, 6);
 
-//preciounitario=Integer.parseInt(registros[3]);
-//sumadeproductos=(int) tab1canti.getSelectedItem();
-//total=sumadeproductos*preciounitario;
-//registros[7]= Integer.toString(total);
 
 
-//JOptionPane.showMessageDialog(null, total);
+String canti=  JarasTab3.getValueAt(JarasTab3.getRowCount()-1, 6).toString();
+String base=  JarasTab3.getValueAt(JarasTab3.getRowCount()-1, 4).toString();
+String totalPrecio=  JarasTab3.getValueAt(JarasTab3.getRowCount()-1, 7).toString();
+int cantidad = Integer.parseInt(canti);
+double base1 = Double.valueOf(base);
+double preciofinal = Double.valueOf(totalPrecio);
+//int luis = registros[7];
+
+//canti++;
+//                 midas.setValueAt(tab2canti.getSelectedItem(), i, 6);
+                 midas1.setValueAt(cantidad+1, JarasTab3.getRowCount()-1, 6);
+                 midas1.setValueAt(preciofinal+base1,JarasTab3.getRowCount()-1, 7);
+  jtextventas2.setText("");
+}
+    
+//    
+//    midas1
+//jtextventas2
+//        JarasTab3
+//    
+//    
+//    
 
 
-             midas1.addRow(new Object[] {registros[0],registros[1],registros[2],registros[3],registros[4],registros[5],registros[6],registros[7]});
-        jtextventas2.setText("");
-//            modelin.addRow(registros);
-////            modelin.insertRow(0, registros);
-//            modelin.insertRow(1, registros);
-//            modelin.insertRow(2, registros);
-//            modelin.insertRow(3, registros);
-            }
+
+
+
+
+//        jTEXTbusquedaTab2.setText("");
+
+            
+            
+            
             
          JarasTab3.setModel(midas1);
-        } catch (Exception e) {
+            
+            } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "error al obtener datos"+e.getMessage());
+            
         }
+               
+     
+                
+//            
+//            }
+//            }
     
-    
+ 
+       
+       
     }
     
     
@@ -2071,12 +2195,12 @@ String total;
     public void ventasDeldia(){
         
         
-    String [] registros= new String[6];
-    String [] columnas= {"Tnombreproduct","id_factura","Vcantidad","ventatotal"};
+    String [] registros= new String[7];
+    String [] columnas= {"Tnombreproduct","id_factura","Vcantidad","ventatotal","ganancias"};
     
     DefaultTableModel modelon= new DefaultTableModel(null, columnas);
     
-    String sql2="select productos.Tnombreproduct, ventas.id_factura, ventas.Vcantidad, ventas.ventaTotal from productos inner join ventas on ventas.id_producto=productos.Id_Pro order by ventas.id_factura asc";
+    String sql2="select productos.Tnombreproduct, ventas.id_factura, ventas.Vcantidad, ventas.ventaTotal, ventas.ganancias from productos inner join ventas on ventas.id_producto=productos.Id_Pro order by ventas.id_factura asc";
     
         try {
             Statement st=con.createStatement();
@@ -2087,6 +2211,7 @@ String total;
             registros[1]=rs.getString("id_factura");
             registros[2]=rs.getString("Vcantidad");
             registros[3]=rs.getString("ventatotal");
+            registros[4]=rs.getString("ganancias");
           
             
             
@@ -2426,7 +2551,10 @@ String total;
     private javax.swing.JButton btnagregar;
     private javax.swing.JButton btnañadir;
     private javax.swing.JButton btnañadir1;
+    private javax.swing.JButton btneliminar;
+    private javax.swing.JButton btnganar;
     private javax.swing.JButton btnvender;
+    private javax.swing.JTextField gananciasDia;
     private javax.swing.JTextField ganar;
     private javax.swing.JTable informes;
     private javax.swing.JButton inventario;
@@ -2446,6 +2574,7 @@ String total;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
