@@ -7,6 +7,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dialog;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.InputStream;
 import java.math.BigInteger;
@@ -50,8 +52,11 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.util.*;
+import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTabbedPane;
 import net.sf.jasperreports.engine.JasperPrintManager;
 
 public class PuntoAras extends javax.swing.JFrame {
@@ -127,6 +132,7 @@ public class PuntoAras extends javax.swing.JFrame {
         tab2imprimir = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         ActualizaPrecio = new javax.swing.JButton();
+        ActualizaPrecio1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         informes = new javax.swing.JTable();
@@ -306,7 +312,7 @@ public class PuntoAras extends javax.swing.JFrame {
                                 .addComponent(jButton3)
                                 .addGap(28, 28, 28)
                                 .addComponent(jButton4)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel10)
@@ -385,6 +391,7 @@ public class PuntoAras extends javax.swing.JFrame {
             }
         ));
         jTableArasTab2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTableArasTab2.setShowGrid(false);
         jTableArasTab2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableArasTab2MouseClicked(evt);
@@ -485,6 +492,13 @@ public class PuntoAras extends javax.swing.JFrame {
             }
         });
 
+        ActualizaPrecio1.setText("+ Producto");
+        ActualizaPrecio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizaPrecio1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -518,12 +532,13 @@ public class PuntoAras extends javax.swing.JFrame {
                                     .addComponent(tab2canti, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnañadir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tab2Quitar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ActualizaPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(ActualizaPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ActualizaPrecio1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(109, 109, 109))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(338, 338, 338)
                         .addComponent(VENTAS, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -542,6 +557,8 @@ public class PuntoAras extends javax.swing.JFrame {
                         .addComponent(tab2Quitar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ActualizaPrecio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ActualizaPrecio1)
                         .addGap(61, 61, 61)
                         .addComponent(jButton6))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -559,6 +576,7 @@ public class PuntoAras extends javax.swing.JFrame {
         );
 
         VENTAS.getAccessibleContext().setAccessibleName("VENTAS\n");
+        ActualizaPrecio1.getAccessibleContext().setAccessibleName("Agregar Producto");
 
         jTabbedPane1.addTab("Ventas", jPanel2);
 
@@ -643,7 +661,7 @@ public class PuntoAras extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(gananciasDia, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(429, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -677,7 +695,10 @@ public class PuntoAras extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1203, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -720,7 +741,6 @@ public class PuntoAras extends javax.swing.JFrame {
 
     private void TablaUpdateProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaUpdateProductosMouseClicked
         int seleccopn = TablaUpdateProductos.rowAtPoint(evt.getPoint());
-        int prueba=TablaUpdateProductos.getColumnCount();
         Jcodigo.setText(TablaUpdateProductos.getValueAt(seleccopn, 0).toString());
         jnombre.setText(TablaUpdateProductos.getValueAt(seleccopn, 1).toString());
         jtamanio.setText(TablaUpdateProductos.getValueAt(seleccopn, 2).toString());
@@ -872,6 +892,7 @@ public class PuntoAras extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(PuntoAras.class.getName()).log(Level.SEVERE, null, ex);
         }
+        jTEXTbusquedaTab2.setText("");
         jTEXTbusquedaTab2.requestFocus();
     }//GEN-LAST:event_tab2imprimirActionPerformed
 
@@ -900,6 +921,7 @@ if (response == JOptionPane.YES_OPTION) {
         limpiarFormulario(this.getContentPane().getComponents());
         eliminar();
         JTTotal1.setText(Double.toString((double) calcularTotalUno()));
+        jTEXTbusquedaTab2.setText("");
         jTEXTbusquedaTab2.requestFocus();
 }
     }//GEN-LAST:event_tab2VenderActionPerformed
@@ -916,6 +938,7 @@ if (response == JOptionPane.YES_OPTION) {
         limpiarFormulario(this.getContentPane().getComponents());
         eliminar();
         JTTotal1.setText(Double.toString((double) calcularTotalUno()));
+        jTEXTbusquedaTab2.setText("");
         jTEXTbusquedaTab2.requestFocus();
         // TODO add your handling code here:
         System.out.println(JarasTab2.getRowCount());
@@ -997,6 +1020,14 @@ if (response == JOptionPane.YES_OPTION) {
         // TODO add your handling code here:
         ActualizarEnVuelo();
     }//GEN-LAST:event_ActualizaPrecioActionPerformed
+
+    private void ActualizaPrecio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizaPrecio1ActionPerformed
+        // TODO add your handling code here:
+        mostrarDialogo();
+        jTEXTbusquedaTab2.setText("");
+        jTEXTbusquedaTab2.requestFocus();
+        
+    }//GEN-LAST:event_ActualizaPrecio1ActionPerformed
     public double calcularTotal() {
 
         double calcularTotal = 0;
@@ -1314,6 +1345,60 @@ if (response == JOptionPane.YES_OPTION) {
         }
 
     }
+    
+    public  void mostrarDialogo() {
+        // Creamos un JFrame principal para que no esté vacío el GUI
+        String [] etiquetas = {"Codigo", "Nombre", "Presentacion","Tamanio","Precio"};
+        JFrame frame = new JFrame("Ventana Principal");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 200);
+        frame.setLocationRelativeTo(null); // Centra la ventana en la pantalla
+        frame.setVisible(false);
+            
+        // Creamos el diálogo
+        JDialog dialogo = new JDialog();
+        dialogo.setLayout(new GridLayout(6, 2)); // Configuramos el layout para que sea una cuadrícula de 6 filas y 2 columnas
+
+        // Creamos los campos de texto
+        JTextField[] campos = new JTextField[5];
+        for (int i = 0; i < 5; i++) {
+            dialogo.add(new JLabel(etiquetas[i]  + ":"));
+            campos[i] = new JTextField(20);
+            dialogo.add(campos[i]);
+        }
+
+        // Botón de Aceptar
+        JButton botonAceptar = new JButton("Aceptar");
+        botonAceptar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<String> datos = new ArrayList<>();
+                // Recogemos los valores de los campos
+                for (int i = 0; i < 5; i++) {
+                    datos.add(campos[i].getText());
+                    System.out.println("Valor " + (i + 1) + ": " + campos[i].getText());
+                }
+                InsertDatosFast(datos.get(0), datos.get(1), datos.get(2), datos.get(3), datos.get(4));
+                dialogo.dispose(); // Cerrar el diálogo correctamente
+            }
+        });
+        dialogo.add(botonAceptar);
+
+        // Botón de Cancelar
+        JButton botonCancelar = new JButton("Cancelar");
+        botonCancelar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dialogo.dispose(); // Cerrar el diálogo correctamente
+            }
+        });
+        dialogo.add(botonCancelar);
+
+        // Establecemos el tamaño del diálogo y lo mostramos
+        dialogo.pack();
+       
+        dialogo.setVisible(true); // Mostrar el cuadro de diálogo de forma modal
+    }
 
     public void MostrarDatos() {
         String[] registros = new String[6];
@@ -1402,6 +1487,37 @@ if (response == JOptionPane.YES_OPTION) {
         ganar.setText("");
 
     }
+    
+    public void InsertDatosFast(String codigo, String nombre, String presentacion, String tamanio, String Precio) {
+        try {
+            String sqql = "INSERT INTO `productos` (`Tnombreproduct`, `tamanio`, `presentacion`, `precio`, `cantidad`,`Id_Pro`,`ganancias`) VALUES (?,?,?,?,?,?,?)";
+            PreparedStatement pst = con.prepareStatement(sqql);
+
+            pst.setString(1, nombre);
+            pst.setString(2, tamanio);
+            pst.setString(3, presentacion);
+            pst.setString(4, Precio);
+
+            int comob = 0;
+            comob = comob + Integer.parseInt((String) jCanti.getSelectedItem());
+            pst.setInt(5, 1);
+            pst.setString(6, codigo);
+
+            if (ganar.getText().equals("")) {
+                pst.setString(7, null);
+            } else if (ganar.getText() != null) {
+
+                pst.setString(7, ganar.getText());
+            }
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "registro exitoso");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error en el regsitro" + e.getMessage());
+        }
+
+    }
+
 
     public void InsertDatos() {
         try {
@@ -1815,6 +1931,8 @@ if (response == JOptionPane.YES_OPTION) {
             pst.execute();
 
             JOptionPane.showMessageDialog(null, "registro modificado");
+            jTEXTbusquedaTab2.setText("");
+            jTEXTbusquedaTab2.requestFocus();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "error en el modificado" + e.getMessage());
@@ -1857,6 +1975,7 @@ if (response == JOptionPane.YES_OPTION) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ActualizaPrecio;
+    private javax.swing.JButton ActualizaPrecio1;
     private javax.swing.JTextField JTTotal1;
     private javax.swing.JTable JarasTab2;
     private javax.swing.JTextField Jcodigo;
